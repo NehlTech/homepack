@@ -52,7 +52,7 @@ export const LogoLink = () => (
         <Image src="/homeLogo.png" alt="homelogo" width={50} height={50} />
       </div>
       <span className="hidden lg:flex text-base 2xl:text-xl font-bold">
-        HMS
+        HPMS
       </span>
     </Link>
   </div>

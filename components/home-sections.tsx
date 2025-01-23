@@ -55,7 +55,7 @@ export const UserSection = () => {
               </div>
               <h3 className="text-2xl font-semibold mb-4">Admin Portal</h3>
               <p className="text-gray-600 mb-6">
-                Secure access for administrator to manage hospital resources.
+                Secure access for administrator to manage healthcare resources.
               </p>
               <Button variant="outline">
                 <Link href="/sign-in">Admin Login</Link>
@@ -155,7 +155,7 @@ export const Features = () => (
   <section className="px-6 py-16">
     <div className="max-w-6xl mx-auto animate-fade-in">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-        Enterprise-Grade Features
+        Excellent Grade Features
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {features.map((feature, index) => (
@@ -200,7 +200,7 @@ export const CTA = () => {
     <section className="px-6 py-16 animate-fade-in">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-6">
-          Ready to Transform Your Hospital Experience?
+          Ready to Transform Your Telemedicine Experience?
         </h2>
         <p className="text-lg mb-8 text-gray-600">
           Take advantage of our awesome services and enjoy rich healthcare

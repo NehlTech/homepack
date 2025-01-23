@@ -16,7 +16,7 @@ const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
           className="w-full h-full object-cover bg-[#DAA520]"
         />
         <div className="absolute top-0 left-0  w-full h-full bg-black bg-opacity-20 z-10 flex flex-col items-center justify-center">
-          <h3 className="text-5xl 2xl:text-5xl font-bold text-black">HMS</h3>
+          <h3 className="text-5xl 2xl:text-5xl font-bold text-black">HPMS</h3>
           <p className="text-pink-600 text-3xl 2xl:text-lg">You're welcome</p>
         </div>
       </div>

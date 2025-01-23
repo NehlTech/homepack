@@ -38,7 +38,7 @@ const HomePage = async () => {
               <h1 className="text-4xl md:text-5xl font-bold text-center">
                 Welcome to <br />
                 <span className="text-yellow-600 text-5xl md:text-6xl">
-                  Homepack Medical Services
+                  HomePack Medical Services
                 </span>
               </h1>
             </div>
