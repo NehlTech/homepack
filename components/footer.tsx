@@ -7,12 +7,9 @@ export const Footer = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h3 className="text-white font-bold mb-4">
-            Homepack Medical Service (HMS)
+            HomePack Medical Service (HPMS)
           </h3>
-          <p className="text-sm">
-            Enterprise telemedicine management solution trusted by leading
-            healthcare providers.
-          </p>
+          <p className="text-sm">Your solution to Telemedicine healthcare</p>
         </div>
         <div>
           <h4 className="text-white font-semibold mb-4">Company</h4>
