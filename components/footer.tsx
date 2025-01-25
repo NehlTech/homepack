@@ -3,8 +3,8 @@ import Link from "next/link";
 export const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="px-6 py-12  text-gray-300">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="px-6 py-12 text-gray-300">
+      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div>
           <h3 className="text-headingColor font-bold mb-4">
             HomePack Medical Service (HPMS)
@@ -13,6 +13,7 @@ export const Footer = () => {
             Your solution to Telemedicine healthcare
           </p>
         </div>
+
         <div>
           <h4 className="text-headingColor font-semibold mb-4">Company</h4>
           <ul className="space-y-2">
@@ -42,6 +43,7 @@ export const Footer = () => {
             </li>
           </ul>
         </div>
+
         <div>
           <h4 className="text-headingColor font-semibold mb-4">Support</h4>
           <ul className="space-y-2">
@@ -63,6 +65,7 @@ export const Footer = () => {
             </li>
           </ul>
         </div>
+
         <div>
           <h4 className="text-headingColor font-semibold mb-4">Legal</h4>
           <ul className="space-y-2">
@@ -85,6 +88,7 @@ export const Footer = () => {
           </ul>
         </div>
       </div>
+
       <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-primaryColor text-center text-sm">
         <p className="text-textColor">
           &copy; {year} HomePack Medical Service Management System. All rights
