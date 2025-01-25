@@ -87,8 +87,8 @@ export const Footer = () => {
       </div>
       <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-primaryColor text-center text-sm">
         <p className="text-textColor">
-          &copy; {year} HomePack Medical Service Hospital Management System. All
-          rights reserved.
+          &copy; {year} HomePack Medical Service Management System. All rights
+          reserved.
         </p>
       </div>
     </footer>
