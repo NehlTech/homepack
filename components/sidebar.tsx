@@ -57,6 +57,7 @@ export const LogoLink = () => (
     </Link>
   </div>
 );
+
 export const Sidebar = async () => {
   const role = await getRole();
 

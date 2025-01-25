@@ -5,7 +5,7 @@ export const Loader = ({ size = 24 }: { size?: number }) => {
     <div className="flex items-center w-full justify-center flex-col">
       <LucideLoader
         size={size}
-        className="animate-spin text-xl text-blue-600"
+        className="animate-spin text-xl text-yellow-600"
       />
       <p className="text-sm text0gray-500">Loading, please wait...</p>
     </div>

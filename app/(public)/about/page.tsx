@@ -7,7 +7,7 @@ const About = () => {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl font-bold mb-4">
-            About Homepack Medical Service
+            About HomePack Medical Service
           </h1>
           <p className="text-xl text-gray-600">
             Leading the future of telemedicine healthcare management

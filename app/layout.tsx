@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Homepack Medical Service",
+  title: "HomePack Medical Service",
   description:
     "A robust system for patient management systems that provides patient information about patient organizations and services.",
 };

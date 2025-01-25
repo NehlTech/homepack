@@ -3,21 +3,23 @@ import Link from "next/link";
 export const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="px-6 py-12 bg-yellow-600 text-gray-300">
+    <footer className="px-6 py-12  text-gray-300">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h3 className="text-white font-bold mb-4">
+          <h3 className="text-headingColor font-bold mb-4">
             HomePack Medical Service (HPMS)
           </h3>
-          <p className="text-sm">Your solution to Telemedicine healthcare</p>
+          <p className="text-sm text-textColor">
+            Your solution to Telemedicine healthcare
+          </p>
         </div>
         <div>
-          <h4 className="text-white font-semibold mb-4">Company</h4>
+          <h4 className="text-headingColor font-semibold mb-4">Company</h4>
           <ul className="space-y-2">
             <li>
               <Link
                 href="/about"
-                className="hover:text-white transition-colors"
+                className="text-textColor hover:text-white transition-colors"
               >
                 About Us
               </Link>
@@ -25,7 +27,7 @@ export const Footer = () => {
             <li>
               <Link
                 href="/contact"
-                className="hover:text-white transition-colors"
+                className="text-textColor hover:text-white transition-colors"
               >
                 Contact Us
               </Link>
@@ -33,7 +35,7 @@ export const Footer = () => {
             <li>
               <Link
                 href="/features"
-                className="hover:text-white transition-colors"
+                className="text-textColor hover:text-white transition-colors"
               >
                 Features
               </Link>
@@ -41,12 +43,12 @@ export const Footer = () => {
           </ul>
         </div>
         <div>
-          <h4 className="text-white font-semibold mb-4">Support</h4>
+          <h4 className="text-headingColor font-semibold mb-4">Support</h4>
           <ul className="space-y-2">
             <li>
               <Link
                 href="/support"
-                className="hover:text-white transition-colors"
+                className="text-textColor hover:text-white transition-colors"
               >
                 Help Center
               </Link>
@@ -54,7 +56,7 @@ export const Footer = () => {
             <li>
               <Link
                 href="/security"
-                className="hover:text-white transition-colors"
+                className="text-textColor hover:text-white transition-colors"
               >
                 Security
               </Link>
@@ -62,12 +64,12 @@ export const Footer = () => {
           </ul>
         </div>
         <div>
-          <h4 className="text-white font-semibold mb-4">Legal</h4>
+          <h4 className="text-headingColor font-semibold mb-4">Legal</h4>
           <ul className="space-y-2">
             <li>
               <Link
                 href="/privacy"
-                className="hover:text-white transition-colors"
+                className="text-textColor hover:text-white transition-colors"
               >
                 Privacy Policy
               </Link>
@@ -75,7 +77,7 @@ export const Footer = () => {
             <li>
               <Link
                 href="/terms"
-                className="hover:text-white transition-colors"
+                className="text-textColor hover:text-white transition-colors"
               >
                 Terms of Service
               </Link>
@@ -83,8 +85,8 @@ export const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-800 text-center text-sm">
-        <p>
+      <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-primaryColor text-center text-sm">
+        <p className="text-textColor">
           &copy; {year} Homepack Medical Service Hospital Management System. All
           rights reserved.
         </p>

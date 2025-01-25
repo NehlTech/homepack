@@ -110,7 +110,7 @@ export const Payments = async ({ patientId }: DataProps) => {
         <div className="hidden lg:flex items-center gap-1">
           <p className="text-2xl font-semibold">{data?.length ?? 0}</p>
           <span className="text-gray-600 text-sm xl:text-base">
-            total records
+            Total records
           </span>
         </div>
       </div>
