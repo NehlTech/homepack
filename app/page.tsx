@@ -12,6 +12,9 @@ import Home from "@/components/home";
 import Services from "@/components/services";
 import HowItWork from "@/components/how-it-works";
 import VirtualTreatment from "@/components/virtual-treatment";
+import Articles from "@/components/articles";
+
+import MainBanner, { BannerData } from "@/components/main-banner";
 
 const HomePage = async () => {
   const { userId } = await auth();
@@ -34,6 +37,8 @@ const HomePage = async () => {
         <Services />
         <HowItWork />
         <VirtualTreatment />
+        <Articles />
+        <MainBanner data={BannerData} />
       </div>
       <Footer />
     </>
