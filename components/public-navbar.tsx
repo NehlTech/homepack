@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoLink } from "./sidebar";
 import { ThemeSwitcher } from "./theme-switcher";
+import { NavbarMenu } from "./navbarMenu";
 
 export const PublicNavbar = () => {
   return (
@@ -9,7 +10,7 @@ export const PublicNavbar = () => {
         <div className="max-w-6xl w-full px-6 py-3 flex items-center justify-between">
           <LogoLink />
 
-          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+          {/* <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <Link
               href={"/about"}
               className="text-gray-900 dark:text-gray-100 transition-colors"
@@ -34,7 +35,8 @@ export const PublicNavbar = () => {
             >
               Login
             </Link>
-          </div>
+          </div> */}
+          <NavbarMenu />
 
           <ThemeSwitcher />
         </div>
