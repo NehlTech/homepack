@@ -1,0 +1,86 @@
+[
+  {
+    "_id": 1001,
+    "name": "Must Have Products",
+    "image": "https://png.pngtree.com/png-clipart/20200226/original/pngtree-cosmetic-banner-with-3d-realistic-white-cream-or-body-lotion-skin-png-image_5313503.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "mustHaveProducts"
+  },
+  {
+    "_id": 1002,
+    "name": "Sport Nutrition",
+    "image": "https://png.pngtree.com/png-vector/20240315/ourlarge/pngtree-sport-nutrition-cells-onboarding-png-image_11974245.png",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "sportNutrition"
+  },
+  {
+    "_id": 1003,
+    "name": "Medical Consumables",
+    "image": "https://www.pngplay.com/wp-content/uploads/7/Capsule-Drug-Background-PNG-Image.png",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "medicalConsumables"
+  },
+  {
+    "_id": 1004,
+    "name": "Elderly Care",
+    "image": "https://png.pngtree.com/png-vector/20221025/ourmid/pngtree-elderly-care-services-hand-drawn-cartoon-flat-illustration-with-caregiver-png-image_6371595.png",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "elderlyCare"
+  },
+  {
+    "_id": 1005,
+    "name": "Personal Care",
+    "image": "https://image.made-in-china.com/226f3j00HrgVFIdyMCqe/350ml-Transparent-PETG-Plastic-Bottle-Gradient-Black-for-Personal-Care-Products.webp",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "personalCare"
+  },
+  {
+    "_id": 1006,
+    "name": "Healthcare Devices",
+    "image": "https://unitedcanadainc.com/cdn/shop/articles/revolutionizing-healthcare-the-latest-trends-driving-growth-in-clinical-diagnostic-equipment_1.png?v=1731317373",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "healthcareDevices"
+  },
+  {
+    "_id": 1007,
+    "name": "Health Food and Drinks",
+    "image": "https://www.pngitem.com/pimgs/m/570-5706073_advertising-healthy-drinks-png-download-drink-transparent-background.png",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "healthfoodDrinks"
+  },
+  {
+    "_id": 1008,
+    "name": "Skin Care",
+    "image": "https://i.pinimg.com/736x/ce/cb/da/cecbda8ce9dff390bc72d7c8796c9870.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "skinCare"
+  },
+  {
+    "_id": 1009,
+    "name": "Mother and Baby Care",
+    "image": "https://png.pngtree.com/png-vector/20240528/ourmid/pngtree-beautiful-mother-and-baby-with-attractive-smiles-png-image_12504560.png",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "motherBaby"
+  },
+  {
+    "_id": 1010,
+    "name": "Accessories & Wearables",
+    "image": "https://png.pngtree.com/png-vector/20241225/ourmid/pngtree-ai-powered-health-gadgets-improving-diagnostics-accuracy-png-image_14888216.png",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "accessoriesWearables"
+  },
+  {
+    "_id": 1011,
+    "name": "Fitness Supplements",
+    "image": "https://www.pngitem.com/pimgs/m/682-6820252_transparent-protein-powder-png-vegan-protein-supplements-png.png",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "fitnessSupplements"
+  },
+  {
+    "_id": 1012,
+    "name": "Ayurvedic Care",
+    "image": "https://gyadacosmetics.com/1104-large_default/fortifying-hyalurvedic-hair-mask-methi-maca-cassia.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
+    "base": "ayurvedicCare"
+  }
+]

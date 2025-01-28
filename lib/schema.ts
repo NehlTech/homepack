@@ -59,16 +59,6 @@ export const PatientFormSchema = z.object({
     }),
   img: z.string().optional(),
 
-  communication: z.enum(["Call", "Text", "WhatsApp"], {
-    message: "Select a communication method.",
-  }),
-
-  internet: z.enum(["Yes", "No"], {
-    message: "Specify internet availability.",
-  }),
-  device: z.enum(["Smart phone", "Cell phone", "Computer"], {
-    message: "Specify the type of device.",
-  }),
   primaryPhysician: z.string().optional(),
 });
 

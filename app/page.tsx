@@ -15,6 +15,8 @@ import VirtualTreatment from "@/components/virtual-treatment";
 import Articles from "@/components/articles";
 
 import MainBanner, { BannerData } from "@/components/main-banner";
+import Faq from "@/components/faq";
+import Categories from "@/components/categories";
 
 const HomePage = async () => {
   const { userId } = await auth();
@@ -39,6 +41,8 @@ const HomePage = async () => {
         <VirtualTreatment />
         <Articles />
         <MainBanner data={BannerData} />
+        <Categories />
+        <Faq />
       </div>
       <Footer />
     </>

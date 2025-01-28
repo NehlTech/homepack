@@ -10,6 +10,7 @@ import { createNewPatient } from "@/app/actions/patient";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -94,6 +95,7 @@ export const PatientForm = () => {
     values
   ) => {
     try {
+      console.log("Form submitted with values:", values);
       setIsLoading(true);
       const resp = await createNewPatient(values, "new-patient");
 
@@ -122,11 +124,13 @@ export const PatientForm = () => {
     const output = await form.trigger(fields as FieldName[], {
       shouldFocus: true,
     });
-
+    console.log("Validation passed:", output);
+    console.log("Current Step:", currentStep);
     if (!output) return;
 
     if (currentStep < steps.length) {
       if (currentStep === steps.length - 1) {
+        console.log("Submitting form...");
         await form.handleSubmit(onSubmit)();
       }
 
@@ -153,6 +157,7 @@ export const PatientForm = () => {
       <SheetContent className="rounded-xl h-[90%] top-[5%] md:right-[1%] w-full z-50">
         <SheetHeader>
           <SheetTitle>Add New Patient</SheetTitle>
+          <SheetDescription />
 
           {currentStep < steps.length && (
             <StepProgress currentStep={currentStep} steps={steps} />
@@ -343,7 +348,7 @@ export const PatientForm = () => {
               >
                 Prev
               </Button>
-              <Button type="button" onClick={nextStep} disabled={isLoading}>
+              <Button type="button" onClick={nextStep}>
                 {currentStep === steps.length - 1 ? "Submit" : "Next"}
               </Button>
             </div>

@@ -47,13 +47,16 @@ const SidebarIcon = ({ Icon }: { Icon: LucideIcon }) => {
 export const LogoLink = () => (
   <div className="flex items-center justify-center lg:justify-start gap-2">
     <Link href="/" className="flex items-center gap-2">
-      <div className="p-1.5 rounded-md  text-white">
+      <div className="hidden md:flex items-center  rounded-md  text-white">
         {/* <SquareActivity size={22} /> */}
-        <Image src="/homeLogo.png" alt="homelogo" width={50} height={50} />
+        <Image src="/logo.png" alt="homelogo" width={150} height={150} />
       </div>
-      <span className="hidden lg:flex text-base 2xl:text-xl font-bold">
-        HPMS
-      </span>
+      <div className="flex md:hidden items-center gap-2">
+        <Image src="/homeLogo.png" alt="Small Logo" width={50} height={50} />
+        <span className="flex md:hidden text-base 2xl:text-xl font-bold">
+          HPMS
+        </span>
+      </div>
     </Link>
   </div>
 );
