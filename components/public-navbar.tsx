@@ -5,7 +5,7 @@ import { NavbarMenu } from "./navbarMenu";
 
 export const PublicNavbar = () => {
   return (
-    <div className="sticky top-0 z-50 bg-white/40 shadow-md dark:bg-gray-900/40 backdrop-blur-sm">
+    <div className="sticky top-0 z-50 bg-[url('/background.avif')] bg-cover bg-center shadow-md dark:bg-gray-900/40 dark:bg-none backdrop-blur-sm">
       <div className="w-full flex items-center justify-center">
         <div className="max-w-6xl w-full px-6 py-3 flex items-center justify-between">
           <LogoLink />

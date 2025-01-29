@@ -35,8 +35,17 @@ export const NavbarMenu: React.FC = () => {
           isMenuOpen ? "block" : "hidden"
         } absolute top-12 left-0 w-full bg-white md:bg-transparent dark:bg-gray-900 md:static md:flex md:items-center md:gap-4`}
       >
+        <Link href="/" className={linkClasses("/")}>
+          Home
+        </Link>
         <Link href="/about" className={linkClasses("/about")}>
           About
+        </Link>
+        <Link href="/services" className={linkClasses("/services")}>
+          Services
+        </Link>
+        <Link href="/product" className={linkClasses("/product")}>
+          Products
         </Link>
         <Link href="/features" className={linkClasses("/features")}>
           Features
