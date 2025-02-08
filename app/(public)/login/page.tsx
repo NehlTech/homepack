@@ -35,7 +35,7 @@ const HomePage = async () => {
             <div className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold text-center">
                 Welcome to <br />
-                <span className="text-yellow-600 text-5xl md:text-6xl">
+                <span className="text-primaryColor text-5xl md:text-6xl">
                   HomePack Medical Services
                 </span>
               </h1>
@@ -55,14 +55,19 @@ const HomePage = async () => {
                 ) : (
                   <>
                     <Link href="/sign-up">
-                      <Button className="md:text-base font-light">
+                      <Button className="md:text-base font-light bg-primaryColor hover:bg-white hover:text-primaryColor hover:border-2 hover:border-primaryColor">
                         New Patient
+                      </Button>
+                    </Link>
+                    <Link href="/normal-user">
+                      <Button className="md:text-base font-light bg-primaryColor hover:bg-white hover:text-primaryColor hover:border-2 hover:border-primaryColor">
+                        Normal User
                       </Button>
                     </Link>
                     <Link href="/sign-in">
                       <Button
                         variant="outline"
-                        className="md:text-base underline hover:text-blue-600"
+                        className="md:text-base underline hover:text-primaryColor"
                       >
                         Login to account
                       </Button>
