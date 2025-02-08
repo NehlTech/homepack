@@ -62,6 +62,95 @@ export const PatientFormSchema = z.object({
   primaryPhysician: z.string().optional(),
 });
 
+const fileSchema = z.instanceof(File, { message: "Required" });
+const imageSchema = fileSchema.refine(
+  (file) => file.size === 0 || file.type.startsWith("image/")
+);
+
+export const ProductFormSchema = z.object({
+  name: z.string().min(3, "Product Name must be at least 3 characters long"),
+  priceInCedis: z.number().min(0.01, "Price must be greater than 0"),
+  description: z.string().min(1, "Description is required").optional(),
+  image: z.instanceof(File).optional(),
+  stockStatus: z.enum(["AVAILABLE", "OUT_OF_STOCK"]).default("AVAILABLE"),
+  isAvailableForPurchase: z.boolean().default(true),
+});
+
+// export const ProductFormSchema = z.object({
+//   productName: z.string().min(3, { message: "Minimum 3 characters required" }),
+//   priceInCedis: z
+//     .string()
+//     .refine((val) => !isNaN(parseFloat(val)), {
+//       message: "Price must be a number",
+//     })
+//     .transform((val) => parseFloat(val)), // Add the transform here
+//   description: z.string().optional(),
+//   stockStatus: z.enum(["AVAILABLE", "OUT_OF_STOCK"]),
+//   isAvailableForPurchase: z.boolean(),
+//   imagePath: z.any().optional(),
+// });
+
+// export const ProductFormSchema = z.object({
+//   name: z.string().min(1),
+//   description: z.string().min(1),
+//   priceInCedis: z.coerce.number().int().min(1),
+//   image: imageSchema.refine((file) => file.size > 0, "Required"),
+// });
+
+// export const UserFormSchema = z.object({
+//   first_name: z
+//     .string()
+//     .trim()
+//     .min(2, "First name must be at least 2 characters.")
+//     .max(30, "`First name must be at most 30 characters"),
+//   last_name: z
+//     .string()
+//     .trim()
+//     .min(2, "Last name must be at least 2 characters.")
+//     .max(30, "`Last name must be at most 30 characters"),
+//   date_of_birth: z.string().optional(), // Optional, in case it's not required for a regular user
+//   gender: z.enum(["MALE", "FEMALE"], { message: "Gender is required!" }),
+//   phone: z.string().min(10, "Enter phone number"),
+//   email: z.string().email("Invalid email address."),
+//   address: z
+//     .string()
+//     .min(5, "Address must be at least 5 characters")
+//     .max(500, "Address must be at most 500 characters")
+//     .optional(), // Optional for users who do not need delivery information
+//   isPatient: z.boolean().default(false), // Flag to indicate if the user is also a patient
+//   // Optional emergency contact details for users who are patients
+//   emergency_contact_name: z
+//     .string()
+//     .min(2, "Emergency contact name is required.")
+//     .max(50, "Emergency contact must be at most 50 characters")
+//     .optional(),
+//   emergency_contact_number: z.string().min(10, "Enter phone number").optional(),
+//   relation: z.enum(["mother", "father", "husband", "wife", "other"]).optional(), // Optional, for patient users only
+//   img: z.string().optional(),
+//   // Consent fields - only required for users who are also patients
+//   privacy_consent: z
+//     .boolean()
+//     .default(false)
+//     .refine((val) => val === true, {
+//       message: "You must agree to the privacy policy.",
+//     })
+//     .optional(), // Optional for non-patients
+//   service_consent: z
+//     .boolean()
+//     .default(false)
+//     .refine((val) => val === true, {
+//       message: "You must agree to the terms of service.",
+//     })
+//     .optional(), // Optional for non-patients
+//   medical_consent: z
+//     .boolean()
+//     .default(false)
+//     .refine((val) => val === true, {
+//       message: "You must agree to the medical treatment terms.",
+//     })
+//     .optional(), // Optional for non-patients
+// });
+
 export const workingDaySchema = z.object({
   day: z.enum([
     "monday",

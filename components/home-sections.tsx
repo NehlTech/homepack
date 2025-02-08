@@ -7,6 +7,7 @@ import {
   Hospital,
   Pill,
   Shield,
+  ShoppingCart,
   User,
   Users,
 } from "lucide-react";
@@ -139,6 +140,22 @@ export const UserSection = () => {
               </p>
               <Button variant="outline">
                 <Link href="/sign-in">Pharm Login</Link>
+              </Button>
+            </div>
+          </Card>
+
+          <Card className="p-6 hover:shadow-lg transition-shadow ">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-4">
+                <ShoppingCart className="w-8 h-8 text-slate-600" />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4">Normal User</h3>
+              <p className="text-gray-600 mb-6">
+                Easy access for customers to browse and purchase medical items,
+                track orders, and manage their cart.
+              </p>
+              <Button variant="outline">
+                <Link href="/sign-in">Normal User Login</Link>
               </Button>
             </div>
           </Card>

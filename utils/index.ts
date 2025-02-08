@@ -10,8 +10,8 @@ export function getInitials(name: string): string {
 
 export function formatNumberToCurrency(
   amount: number,
-  currency: string = "USD",
-  locale: string = "en-US"
+  currency: string = "GHS",
+  locale: string = "en-GH"
 ): string {
   return new Intl.NumberFormat(locale, {
     style: "currency",

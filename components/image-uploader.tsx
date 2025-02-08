@@ -13,9 +13,14 @@ interface UploaderProps {
 export const ImageUploader = ({ imgURL, setImgURL }: UploaderProps) => {
   return (
     <CldUploadWidget
-      uploadPreset="kinda-hms"
-      onSuccess={(res, { widget }) => {
-        setImgURL(res.info);
+      uploadPreset="homepack-hms"
+      onSuccess={(res: any, { widget }) => {
+        const uploadedImageUrl = res?.info?.secure_url;
+        console.log("displaying image");
+        console.log("This is the image:" + uploadedImageUrl);
+        if (uploadedImageUrl) {
+          setImgURL(uploadedImageUrl);
+        }
         widget.close();
       }}
     >
@@ -23,7 +28,7 @@ export const ImageUploader = ({ imgURL, setImgURL }: UploaderProps) => {
         return (
           <div className="flex gap-4 z-[999]">
             <Image
-              src={imgURL ? imgURL : "/profile.png"}
+              src={imgURL || "/profile.png"}
               width={60}
               height={60}
               alt="profile picture"

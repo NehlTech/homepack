@@ -44,4 +44,5 @@ export const routeAccess: RouteAccessProps = {
   "/record/available-doctors": ["admin", "patient"],
   "/notifications": ALL_LEVEL,
   "/record/appointments": ["admin", "doctor", "nurse", "patient"],
+  "/shop(.*)": ["admin"],
 };

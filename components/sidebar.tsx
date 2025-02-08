@@ -15,6 +15,7 @@ import {
   UserRound,
   Users,
   UsersRound,
+  ShoppingCart,
 } from "lucide-react";
 import Link from "next/link";
 import { LogoutButton } from "./logout-button";
@@ -49,7 +50,13 @@ export const LogoLink = () => (
     <Link href="/" className="flex items-center gap-2">
       <div className="hidden md:flex items-center  rounded-md  text-white">
         {/* <SquareActivity size={22} /> */}
-        <Image src="/logo.png" alt="homelogo" width={150} height={150} />
+        <Image
+          src="/logo.png"
+          alt="homelogo"
+          width={150}
+          height={150}
+          priority
+        />
       </div>
       <div className="flex md:hidden items-center gap-2">
         <Image src="/homeLogo.png" alt="Small Logo" width={50} height={50} />
@@ -192,6 +199,35 @@ export const Sidebar = async () => {
           href: "/pharmacy/invoices",
           access: ["admin", "pharmacy", "account"],
           icon: List,
+        },
+      ],
+    },
+    {
+      label: "Shop",
+      links: [
+        {
+          name: "Dashboard",
+          href: "/shop",
+          access: ["admin"],
+          icon: LayoutDashboard,
+        },
+        {
+          name: "Products",
+          href: "/shop/product",
+          access: ["admin"],
+          icon: ShoppingCart,
+        },
+        {
+          name: "Customers",
+          href: "/shop/customers",
+          access: ["admin"],
+          icon: UsersRound,
+        },
+        {
+          name: "Sales",
+          href: "/shop/sales",
+          access: ["admin"],
+          icon: Receipt,
         },
       ],
     },

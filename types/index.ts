@@ -12,4 +12,5 @@ export type DeleteType =
   | "service"
   | "vital_signs"
   | "diagnosis"
-  | "drug";
+  | "drug"
+  | "product";

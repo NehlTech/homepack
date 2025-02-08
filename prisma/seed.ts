@@ -75,9 +75,7 @@ async function seed() {
   }
 
   // Create 20 patients
-
   const patients = [];
-
   for (let i = 0; i < 20; i++) {
     const physician = doctors[Math.floor(Math.random() * doctors.length)];
     const patient = await prisma.patient.create({
@@ -87,7 +85,6 @@ async function seed() {
         last_name: faker.name.lastName(),
         date_of_birth: faker.date.birthdate(),
         gender: i % 2 === 0 ? "MALE" : "FEMALE",
-
         phone: faker.phone.number(),
         email: faker.internet.email(),
         marital_status: i % 3 === 0 ? "married" : "single",
@@ -98,11 +95,6 @@ async function seed() {
         blood_group: i % 4 === 0 ? "O+" : "A+",
         allergies: faker.lorem.words(2),
         medical_conditions: faker.lorem.words(3),
-        // communication: "CALL",
-
-        // internet: i % 2 === 0 ? "YES" : "NO",
-        // device:
-        //   i % 3 === 0 ? "Smart phone" : i % 3 === 1 ? "Cell phone" : "Computer",
         privacy_consent: true,
         service_consent: true,
         medical_consent: true,
@@ -114,10 +106,9 @@ async function seed() {
     patients.push(patient);
   }
 
-  // Create Appointments user_2pQ8RG0BBWzy7emlyAAvgAGrIqo
+  // Create Appointments
   const statusData = ["PENDING", "SCHEDULED", "COMPLETED", "CANCELLED"];
   const typesData = ["Checkup", "Consultation", "Routine Checkup", "Lab Test"];
-
   for (let i = 0; i < 5; i++) {
     const doctor = doctors[Math.floor(Math.random() * doctors.length)];
     const patient = patients[Math.floor(Math.random() * patients.length)];
@@ -126,8 +117,8 @@ async function seed() {
 
     await prisma.appointment.create({
       data: {
-        patient_id: patient,
-        doctor_id: doctor,
+        patient_id: patient.id,
+        doctor_id: doctor.id,
         appointment_date: faker.date.past(),
         time: "12:30 AM",
         status: status,
@@ -137,12 +128,13 @@ async function seed() {
     });
   }
 
+  // Create Notifications
   for (let i = 0; i < 10; i++) {
     const patient = patients[Math.floor(Math.random() * patients.length)];
 
     await prisma.notification.create({
       data: {
-        user_id: patient,
+        user_id: patient.id, // Ensure user_id is correctly set to patient
         date: faker.date.past(),
         title: faker.hacker.phrase(),
         message: faker.lorem.sentence(),
@@ -150,16 +142,39 @@ async function seed() {
     });
   }
 
+  // Create Ratings
   for (let i = 0; i < 10; i++) {
     const patient = patients[Math.floor(Math.random() * patients.length)];
     const doctor = doctors[Math.floor(Math.random() * doctors.length)];
 
     await prisma.rating.create({
       data: {
-        staff_id: doctor,
-        patient_id: patient,
+        staff_id: doctor.id,
+        patient_id: patient.id,
         rating: faker.number.int({ min: 1, max: 5 }),
         comment: faker.lorem.sentence(),
+      },
+    });
+  }
+
+  // Create Products (for example, 5 products)
+
+  const productStatuses = ["AVAILABLE", "OUT_OF_STOCK"];
+
+  for (let i = 0; i < 5; i++) {
+    const priceString = faker.commerce.price(10, 500); // Get price as string
+    const priceInCedis = parseFloat(priceString); // Convert to number
+
+    await prisma.product.create({
+      data: {
+        productName: faker.commerce.productName(),
+        description: faker.lorem.sentence(),
+        priceInCedis: priceInCedis, // Use the number here
+        createdAt: faker.date.past(), // Correct field name is createdAt
+        stockStatus:
+          productStatuses[Math.floor(Math.random() * productStatuses.length)], // Correct field name
+        isAvailableForPurchase: Math.random() > 0.5,
+        // colorCode: generateRandomColor(), // If this is a custom function, make sure it returns a string
       },
     });
   }
@@ -173,3 +188,226 @@ seed().catch((e) => {
   prisma.$disconnect();
   process.exit(1);
 });
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+// const { PrismaClient } = require("@prisma/client");
+// const { fakerDE: faker } = require("@faker-js/faker");
+
+// const prisma = new PrismaClient();
+
+// function generateRandomColor() {
+//   let hexColor = "";
+//   do {
+//     const randomInt = Math.floor(Math.random() * 16777216);
+//     hexColor = `#${randomInt.toString(16).padStart(6, "0")}`;
+//   } while (
+//     hexColor.toLowerCase() === "#ffffff" ||
+//     hexColor.toLowerCase() === "#000000"
+//   );
+//   return hexColor;
+// }
+
+// async function seed() {
+//   console.log("Seeding data...");
+
+//   // Create 3 staff members
+//   const staffRoles = ["NURSE", "CASHIER", "LAB_TECHNICIAN"];
+//   const staffMembers = [];
+
+//   for (const role of staffRoles) {
+//     const staff = await prisma.staff.create({
+//       data: {
+//         id: faker.string.uuid(),
+//         email: faker.internet.email(),
+//         name: faker.person.fullName(),
+//         phone: faker.phone.number(),
+//         address: faker.location.streetAddress(),
+//         department: faker.company.name(),
+//         role: role,
+//         status: "ACTIVE",
+//         colorCode: generateRandomColor(),
+//       },
+//     });
+//     staffMembers.push(staff);
+//   }
+
+//   // Create 10 doctors
+//   const doctorData = [];
+//   const doctors = [];
+//   // for (let i = 0; i < 10; i++) {
+//   //   const doctor = await prisma.doctor.create({
+//   //     data: {
+//   //       id: faker.string.uuid(),
+//   //       email: faker.internet.email(),
+//   //       name: faker.person.fullName(),
+//   //       specialization: faker.person.jobType(),
+//   //       license_number: faker.string.uuid(),
+//   //       phone: faker.phone.number(),
+//   //       address: faker.location.streetAddress(),
+//   //       department: faker.company.name(),
+//   //       availability_status: "ACTIVE",
+//   //       colorCode: generateRandomColor(),
+//   //       type: i % 2 === 0 ? "FULL" : "PART",
+//   //       working_days: {
+//   //         create: [
+//   //           { day: "Monday", start_time: "08:00", close_time: "17:00" },
+//   //           { day: "Wednesday", start_time: "08:00", close_time: "17:00" },
+//   //         ],
+//   //       },
+//   //     },
+//   //   });
+//   //   doctors.push(doctor);
+//   // }
+
+//   // Create 20 patients
+//   for (let i = 0; i < 10; i++) {
+//     doctorData.push({
+//       id: faker.string.uuid(),
+//       email: faker.internet.email(),
+//       name: faker.person.fullName(),
+//       specialization: faker.person.jobType(),
+//       license_number: faker.string.uuid(),
+//       phone: faker.phone.number(),
+//       address: faker.location.streetAddress(),
+//       department: faker.company.name(),
+//       availability_status: "ACTIVE",
+//       colorCode: generateRandomColor(),
+//       type: i % 2 === 0 ? "FULL" : "PART",
+//       working_days: {
+//         create: [
+//           { day: "Monday", start_time: "08:00", close_time: "17:00" },
+//           { day: "Wednesday", start_time: "08:00", close_time: "17:00" },
+//         ],
+//       },
+//     });
+//   }
+
+//   // const doctors = await prisma.doctor.create({ data: doctorData });
+//   for (const doctor of doctorData) {
+//     const createdDoctor = await prisma.doctor.create({
+//       data: doctor,
+//     });
+//     doctors.push(createdDoctor);
+//   }
+//   /** ================ SEED PATIENTS ================== */
+//   const allDoctors = await prisma.doctor.findMany();
+
+//   if (allDoctors.length === 0) {
+//     throw new Error("No doctors found! Please seed doctors first.");
+//   }
+
+//   const patientData = [];
+//   for (let i = 0; i < 20; i++) {
+//     const physician = allDoctors[Math.floor(Math.random() * allDoctors.length)];
+//     // const patient = await prisma.patient.create({
+//     //   data: {
+//     //     id: faker.string.uuid(),
+//     //     first_name: faker.person.firstName(),
+//     //     last_name: faker.person.lastName(),
+//     //     date_of_birth: faker.date.birthdate(),
+//     //     gender: i % 2 === 0 ? "MALE" : "FEMALE",
+//     //     phone: faker.phone.number(),
+//     //     email: faker.internet.email(),
+//     //     marital_status: i % 3 === 0 ? "married" : "single",
+//     //     address: faker.location.streetAddress(),
+//     //     emergency_contact_name: faker.person.fullName(),
+//     //     emergency_contact_number: faker.phone.number(),
+//     //     relation: "mother",
+//     //     blood_group: i % 4 === 0 ? "O+" : "A+",
+//     //     allergies: faker.lorem.words(2),
+//     //     medical_conditions: faker.lorem.words(3),
+//     //     privacy_consent: true,
+//     //     service_consent: true,
+//     //     medical_consent: true,
+//     //     colorCode: generateRandomColor(),
+//     //     physician_id: physician.id,
+//     //   },
+//     // });
+//     // patients.push(patient);
+//     patientData.push({
+//       id: faker.string.uuid(),
+//       first_name: faker.person.firstName(),
+//       last_name: faker.person.lastName(),
+//       date_of_birth: faker.date.birthdate(),
+//       gender: i % 2 === 0 ? "MALE" : "FEMALE",
+//       phone: faker.phone.number(),
+//       email: faker.internet.email(),
+//       marital_status: i % 3 === 0 ? "married" : "single",
+//       address: faker.location.streetAddress(),
+//       emergency_contact_name: faker.person.fullName(),
+//       emergency_contact_number: faker.phone.number(),
+//       relation: "mother",
+//       blood_group: i % 4 === 0 ? "O+" : "A+",
+//       allergies: faker.lorem.words(2),
+//       medical_conditions: faker.lorem.words(3),
+//       privacy_consent: true,
+//       service_consent: true,
+//       medical_consent: true,
+//       colorCode: generateRandomColor(),
+//       physician_id: physician.id, // Ensuring the physician exists before assigning
+//     });
+//   }
+//   const patients = await prisma.patient.create({ data: patientData });
+//   // Create Appointments
+//   const statusData = ["PENDING", "SCHEDULED", "COMPLETED", "CANCELLED"];
+//   const typesData = ["Checkup", "Consultation", "Routine Checkup", "Lab Test"];
+
+//   for (let i = 0; i < 5; i++) {
+//     const doctor = doctors[Math.floor(Math.random() * doctors.length)];
+//     const patient = patients[Math.floor(Math.random() * patients.length)];
+//     const type = typesData[Math.floor(Math.random() * typesData.length)];
+//     const status = statusData[Math.floor(Math.random() * statusData.length)];
+
+//     await prisma.appointment.create({
+//       data: {
+//         patient_id: patient.id,
+//         doctor_id: doctor.id,
+//         appointment_date: faker.date.past(),
+//         time: "12:30 AM",
+//         status: status,
+//         type: type,
+//         reason: faker.lorem.sentence(),
+//       },
+//     });
+//   }
+
+//   // Create Notifications
+//   for (let i = 0; i < 10; i++) {
+//     const patient = patients[Math.floor(Math.random() * patients.length)];
+
+//     await prisma.notification.create({
+//       data: {
+//         user_id: patient.id,
+//         date: faker.date.past(),
+//         title: faker.hacker.phrase(),
+//         message: faker.lorem.sentence(),
+//       },
+//     });
+//   }
+
+//   // Create Ratings
+//   for (let i = 0; i < 10; i++) {
+//     const patient = patients[Math.floor(Math.random() * patients.length)];
+//     const doctor = doctors[Math.floor(Math.random() * doctors.length)];
+
+//     await prisma.rating.create({
+//       data: {
+//         staff_id: doctor.id,
+//         patient_id: patient.id,
+//         rating: faker.number.int({ min: 1, max: 5 }),
+//         comment: faker.lorem.sentence(),
+//       },
+//     });
+//   }
+
+//   console.log("Seeding complete!");
+//   await prisma.$disconnect();
+// }
+
+// seed().catch((e) => {
+//   console.error(e);
+//   prisma.$disconnect();
+//   process.exit(1);
+// });

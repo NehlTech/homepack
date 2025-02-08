@@ -53,9 +53,7 @@ export async function createNewPatient(data: any, pid: string) {
         emergency_contact_name: validatedData.emergency_contact_name,
         emergency_contact_number: validatedData.emergency_contact_number,
         relation: validatedData.relation,
-        // communication: validatedData.communication,
-        // device: validatedData.device,
-        // internet: validatedData.internet,
+
         blood_group: validatedData.blood_group ?? null,
         allergies: validatedData.allergies ?? null,
         medical_conditions: validatedData.medical_conditions ?? null,
@@ -75,7 +73,7 @@ export async function createNewPatient(data: any, pid: string) {
       data: {
         title: "Welcome on board",
         message:
-          `You are welcome to the Homepack Healthcare Management System` +
+          `You are welcome to the HomePack Healthcare Management System` +
           " " +
           `${validatedData.first_name}  ${validatedData.last_name}.`,
         user_id: patient_id,
@@ -88,6 +86,7 @@ export async function createNewPatient(data: any, pid: string) {
     return { success: false, error: true, msg: error?.message };
   }
 }
+
 export async function updatePatient(data: any, pid: string) {
   try {
     const validateData = PatientFormSchema.safeParse(data);
@@ -121,9 +120,6 @@ export async function updatePatient(data: any, pid: string) {
         emergency_contact_name: validatedData.emergency_contact_name,
         emergency_contact_number: validatedData.emergency_contact_number,
         relation: validatedData.relation,
-        // communication: validatedData.communication,
-        // device: validatedData.device,
-        // internet: validatedData.internet,
         blood_group: validatedData.blood_group ?? null,
         allergies: validatedData.allergies ?? null,
         medical_conditions: validatedData.medical_conditions ?? null,
@@ -155,3 +151,164 @@ export async function updatedPatientMetadata(patientId: string) {
 
   return { success: true, message: "Updated patient metadata" };
 }
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+// export async function createNewPatient(data: any, pid: string) {
+//   try {
+//     const validateData = PatientFormSchema.safeParse(data);
+
+//     if (!validateData.success) {
+//       return {
+//         success: false,
+//         error: true,
+//         msg: "Provide all required fields.",
+//       };
+//     }
+
+//     const validatedData = validateData.data;
+//     let patient_id = pid;
+//     const colorCode = generateRandomColor();
+
+//     const client = await clerkClient();
+
+//     if (pid === "new-patient") {
+//       // Create a user in Clerk
+//       const user = await client.users.createUser({
+//         emailAddress: [validatedData.email],
+//         password: validatedData.phone,
+//         firstName: validatedData.first_name,
+//         lastName: validatedData.last_name,
+//         publicMetadata: { role: "patient" },
+//       });
+
+//       patient_id = user.id;
+
+//       // Create User entry in DB (linked to Patient)
+//       await db.user.create({
+//         data: {
+//           id: patient_id,
+//           email: validatedData.email,
+//           name: `${validatedData.first_name} ${validatedData.last_name}`,
+//           role: "PATIENT",
+//         },
+//       });
+//     } else {
+//       // Ensure existing user has the right role
+//       await client.users.updateUser(pid, {
+//         publicMetadata: { role: "patient" },
+//       });
+//     }
+
+//     // Create Patient record
+//     await db.patient.create({
+//       data: {
+//         id: patient_id,
+//         first_name: validatedData.first_name,
+//         last_name: validatedData.last_name,
+//         date_of_birth: new Date(validatedData.date_of_birth),
+//         gender: validatedData.gender,
+//         phone: validatedData.phone,
+//         email: validatedData.email,
+//         marital_status: validatedData.marital_status,
+//         address: validatedData.address,
+//         emergency_contact_name: validatedData.emergency_contact_name,
+//         emergency_contact_number: validatedData.emergency_contact_number,
+//         relation: validatedData.relation,
+
+//         blood_group: validatedData.blood_group ?? null,
+//         allergies: validatedData.allergies ?? null,
+//         medical_conditions: validatedData.medical_conditions ?? null,
+//         medical_history: validatedData.medical_history ?? null,
+//         insurance_provider: validatedData.insurance_provider ?? null,
+//         insurance_number: validatedData.insurance_number ?? null,
+//         privacy_consent: validatedData.privacy_consent,
+//         service_consent: validatedData.service_consent,
+//         medical_consent: validatedData.medical_consent,
+//         img: validatedData.img ?? null,
+//         colorCode: colorCode,
+//         physician_id: validatedData.primaryPhysician ?? null,
+//       },
+//     });
+
+//     // Create a welcome notification
+//     await db.notification.create({
+//       data: {
+//         title: "Welcome on board",
+//         message: `You are welcome to the HomePack Healthcare Management System, ${validatedData.first_name} ${validatedData.last_name}.`,
+//         user_id: patient_id,
+//       },
+//     });
+
+//     return { success: true, error: false, msg: "Registered successfully" };
+//   } catch (error: any) {
+//     console.error(error);
+//     return { success: false, error: true, msg: error?.message };
+//   }
+// }
+
+// export async function updatePatient(data: any, pid: string) {
+//   try {
+//     const validateData = PatientFormSchema.safeParse(data);
+
+//     if (!validateData.success) {
+//       return {
+//         success: false,
+//         error: true,
+//         msg: "Provide all required fields.",
+//       };
+//     }
+
+//     const validatedData = validateData.data;
+//     const client = await clerkClient();
+
+//     await client.users.updateUser(pid, {
+//       firstName: validatedData.first_name,
+//       lastName: validatedData.last_name,
+//     });
+
+//     await db.patient.update({
+//       where: { id: pid },
+//       data: {
+//         first_name: validatedData.first_name,
+//         last_name: validatedData.last_name,
+//         date_of_birth: new Date(validatedData.date_of_birth),
+//         gender: validatedData.gender,
+//         phone: validatedData.phone,
+//         email: validatedData.email,
+//         marital_status: validatedData.marital_status,
+//         address: validatedData.address,
+//         emergency_contact_name: validatedData.emergency_contact_name,
+//         emergency_contact_number: validatedData.emergency_contact_number,
+//         relation: validatedData.relation,
+
+//         blood_group: validatedData.blood_group ?? null,
+//         allergies: validatedData.allergies ?? null,
+//         medical_conditions: validatedData.medical_conditions ?? null,
+//         medical_history: validatedData.medical_history ?? null,
+//         insurance_provider: validatedData.insurance_provider ?? null,
+//         insurance_number: validatedData.insurance_number ?? null,
+//         privacy_consent: validatedData.privacy_consent,
+//         service_consent: validatedData.service_consent,
+//         medical_consent: validatedData.medical_consent,
+//         img: validatedData.img ?? null,
+//         physician_id: validatedData.primaryPhysician ?? null,
+//       },
+//     });
+
+//     return { success: true, error: false, msg: "Updated successfully" };
+//   } catch (error: any) {
+//     console.error(error);
+//     return { success: false, error: true, msg: error?.message };
+//   }
+// }
+
+// export async function updatedPatientMetadata(patientId: string) {
+//   const client = await clerkClient();
+
+//   await client.users.updateUser(patientId, {
+//     publicMetadata: { role: "patient" },
+//   });
+
+//   return { success: true, message: "Updated patient metadata" };
+// }
